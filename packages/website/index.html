@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación - Comida Favorita</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <img src="food-icon.png" alt="Comida" class="food-icon">
+                <h1>Votación</h1>
+            </div>
+
+            <div class="form-group">
+                <label for="comida-select">Seleccione su Preferencia:</label>
+                <select id="comida-select" class="select-box">
+                    <option value="">Seleccionar</option>
+                </select>
+            </div>
+
+            <button id="votar-btn" class="btn-votar">Votar</button>
+
+            <div id="mensaje" class="mensaje"></div>
+
+            <a href="reporte.html" class="link-reporte">Ver Reporte de Votación</a>
+        </div>
+    </div>
+</body>
+
+</html>

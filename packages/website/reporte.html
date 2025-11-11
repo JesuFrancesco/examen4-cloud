@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte - Votación de Comidas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="reporte.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card card-reporte">
+            <div class="header">
+                <img src="food-icon.png" alt="Comida" class="food-icon">
+                <h1>Reporte</h1>
+            </div>
+
+            <div class="reporte-content">
+                <table id="tabla-reporte" class="tabla-votos">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Comida</th>
+                            <th># Votos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-reporte">
+                        <!-- Los datos se cargarán dinámicamente -->
+                    </tbody>
+                </table>
+
+                <div id="loading" class="loading">Cargando resultados...</div>
+                <div id="error-mensaje" class="mensaje error"></div>
+            </div>
+
+            <a href="index.html" class="link-volver">← Volver a Votación</a>
+        </div>
+    </div>
+</body>
+
+</html>
