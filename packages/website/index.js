@@ -1,6 +1,6 @@
 // API Endpoints
-const COMIDA_API_URL = "https://<your-api-gateway-domain>/get-comidas-fn";
-const SELECCION_API_URL = "https://<your-api-gateway-domain>/set-seleccion-fn";
+const COMIDA_API_URL = "<yep>/v1/get-comidas";
+const SELECCION_API_URL = "<yep>/v1/set-seleccion";
 
 // Elementos del DOM
 const comidasSelect = document.getElementById("comida-select");

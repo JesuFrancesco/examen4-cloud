@@ -1,5 +1,5 @@
 // API Endpoint
-const REPORTE_API_URL = "https://<your-api-gateway-domain>/get-reporte-fn";
+const REPORTE_API_URL = "<yep>/get-reporte";
 
 // Elementos del DOM
 const tbodyReporte = document.getElementById("tbody-reporte");
