@@ -17,7 +17,7 @@ def handler(ctx, data: io.BytesIO = None):
     request = borneo.QueryRequest().set_statement(pSQL)
     while True:
         result = handle.query(request)
-        lista.append(result.get_results())
+        lista = result.get_results()
         if request.is_done():
             break
     handle.close()
