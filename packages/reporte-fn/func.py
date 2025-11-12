@@ -2,20 +2,22 @@ import io
 import json
 import logging
 
+from atp_conn import get_connection
 from fdk import response
 
 
 def handler(ctx, data: io.BytesIO = None):
-    name = "World"
-    try:
-        body = json.loads(data.getvalue())
-        name = body.get("name")
-    except (Exception, ValueError) as ex:
-        logging.getLogger().info('error parsing json payload: ' + str(ex))
+    logging.getLogger().debug("Retornando votos desde Oracle ATP DB")
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT comida_votada, COUNT(1) as votos FROM votacion GROUP BY comida_votada"
+        )
+        result = cursor.fetchall()
+        res = [{"tipo_comida": row[0], "votos": row[1]} for row in result]
 
-    logging.getLogger().info("Inside Python Hello World function")
     return response.Response(
-        ctx, response_data=json.dumps(
-            {"message": "Hello {0}".format(name)}),
-        headers={"Content-Type": "application/json"}
+        ctx,
+        response_data=json.dumps(res),
+        headers={"Content-Type": "application/json"},
     )

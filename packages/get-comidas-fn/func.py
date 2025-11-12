@@ -2,20 +2,31 @@ import io
 import json
 import logging
 
+import borneo
+from nosql_conn import get_connection
+
 from fdk import response
 
 
 def handler(ctx, data: io.BytesIO = None):
-    name = "World"
-    try:
-        body = json.loads(data.getvalue())
-        name = body.get("name")
-    except (Exception, ValueError) as ex:
-        logging.getLogger().info('error parsing json payload: ' + str(ex))
 
-    logging.getLogger().info("Inside Python Hello World function")
+    logging.getLogger().debug("Retornando comidas desde Oracle NoSQL DB")
+    handle = get_connection()
+    pSQL = "SELECT * FROM comidas"
+    lista = []
+    request = borneo.QueryRequest().set_statement(pSQL)
+    while True:
+        result = handle.query(request)
+        lista.append(result.get_results())
+        if request.is_done():
+            break
+    handle.close()
+
+    res = json.dumps(lista)
+    logging.getLogger().debug("Comidas obtenidas: " + res)
+
     return response.Response(
-        ctx, response_data=json.dumps(
-            {"message": "Hello {0}".format(name)}),
-        headers={"Content-Type": "application/json"}
+        ctx,
+        response_data=res,
+        headers={"Content-Type": "application/json"},
     )
