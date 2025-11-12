@@ -17,9 +17,9 @@ async function cargarComidas() {
   try {
     const response = await fetch(COMIDA_API_URL, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
     });
 
     if (!response.ok) {
@@ -29,7 +29,7 @@ async function cargarComidas() {
     const data = await response.json();
 
     // Asumiendo que el API retorna { comidas: [...] }
-    const comidas = data.comidas || [];
+    const comidas = data || [];
 
     // Limpiar opciones existentes (excepto la primera)
     comidasSelect.innerHTML = '<option value="">Seleccionar</option>';
@@ -37,8 +37,8 @@ async function cargarComidas() {
     // Agregar comidas al select
     comidas.forEach((comida) => {
       const option = document.createElement("option");
-      option.value = comida;
-      option.textContent = comida;
+      option.value = comida.nombre;
+      option.textContent = comida.nombre;
       comidasSelect.appendChild(option);
     });
   } catch (error) {
