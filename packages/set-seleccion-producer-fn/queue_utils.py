@@ -21,17 +21,3 @@ def publish_message(message_content):
         ),
     )
     return publish_message_response
-
-
-# ==========
-# EXAMPLE
-# ==========
-# if __name__ == "__main__":
-#     response = publish_message(
-#         message_content="Hola desde la Universidad de Lima",
-#     )
-#     print(response.data)
-#     response = publish_message(
-#         message_content='[{"ID_PERSONA": 89, "ID_EMPRESA": 4, "MONTO": 780}, {"ID_PERSONA": 66, "ID_EMPRESA": 5, "MONTO": 1447}, {"ID_PERSONA": 50, "ID_EMPRESA": 3, "MONTO": 736}]',
-#     )
-#     print(response.data)

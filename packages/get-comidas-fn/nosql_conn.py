@@ -11,6 +11,7 @@ def get_connection():
         borneo.NoSQLHandleConfig(region)
         .set_authorization_provider(signer)
         .set_default_compartment(compartment)
+        .set_logger(None)
     )
     handle = borneo.NoSQLHandle(config)
     return handle

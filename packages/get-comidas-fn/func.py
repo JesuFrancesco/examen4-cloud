@@ -12,7 +12,7 @@ def handler(ctx, data: io.BytesIO = None):
 
     logging.getLogger().debug("Retornando comidas desde Oracle NoSQL DB")
     handle = get_connection()
-    pSQL = "SELECT * FROM comidas"
+    pSQL = "SELECT * FROM TipoComida"
     lista = []
     request = borneo.QueryRequest().set_statement(pSQL)
     while True:
