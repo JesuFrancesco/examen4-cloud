@@ -14,9 +14,14 @@ def get_connection() -> oracledb.Connection:
     Returns:
         oracledb.Connection: An active connection to the Oracle database.
     """
-    user = os.getenv("DB_USER", user)
-    password = os.getenv("DB_PASSWORD", password)
-    dsn = os.getenv("DB_DSN", dsn)
+    user = os.getenv("DB_USER")
+    password = os.getenv("DB_PASSWORD")
+    dsn = os.getenv("DB_DSN")
+
+    if not all([user, password, dsn]):
+        raise ValueError(
+            "Database connection parameters are not fully set in environment variables."
+        )
 
     connection = oracledb.connect(user=user, password=password, dsn=dsn)
 

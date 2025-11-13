@@ -1,4 +1,2 @@
 fdk>=0.1.102
-oci
-oci-cli
 oracledb
