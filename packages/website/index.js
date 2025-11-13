@@ -17,9 +17,6 @@ async function cargarComidas() {
   try {
     const response = await fetch(COMIDA_API_URL, {
       method: "GET",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
     });
 
     if (!response.ok) {
@@ -28,13 +25,10 @@ async function cargarComidas() {
 
     const data = await response.json();
 
-    // Asumiendo que el API retorna { comidas: [...] }
     const comidas = data || [];
 
-    // Limpiar opciones existentes (excepto la primera)
     comidasSelect.innerHTML = '<option value="">Seleccionar</option>';
 
-    // Agregar comidas al select
     comidas.forEach((comida) => {
       const option = document.createElement("option");
       option.value = comida.nombre;

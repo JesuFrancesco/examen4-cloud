@@ -14,16 +14,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Función para obtener el reporte desde el API
 async function cargarReporte() {
   try {
-    // Mostrar loading
     loadingDiv.style.display = "block";
     errorMensaje.textContent = "";
     errorMensaje.style.display = "none";
 
     const response = await fetch(REPORTE_API_URL, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
 
     if (!response.ok) {
@@ -32,13 +28,10 @@ async function cargarReporte() {
 
     const data = await response.json();
 
-    // Asumiendo que el API retorna { votos: [{comida: "Peruana", cantidad: 10}, ...] }
-    const votos = data.votos || [];
+    const votos = data || [];
 
-    // Ocultar loading
     loadingDiv.style.display = "none";
 
-    // Renderizar tabla
     renderizarTabla(votos);
   } catch (error) {
     console.error("Error:", error);
@@ -83,13 +76,3 @@ function renderizarTabla(votos) {
 async function refrescarReporte() {
   await cargarReporte();
 }
-
-// Agregar botón de refresh (opcional)
-// Puedes descomentar esto si quieres un botón de actualización
-/*
-const btnRefresh = document.createElement('button');
-btnRefresh.textContent = 'Actualizar';
-btnRefresh.className = 'btn-refresh';
-btnRefresh.onclick = refrescarReporte;
-document.querySelector('.reporte-content').insertBefore(btnRefresh, document.querySelector('.tabla-votos'));
-*/
