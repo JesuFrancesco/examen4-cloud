@@ -1,3 +1,6 @@
+packages/website/*.js
+packages/website/*.js
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
