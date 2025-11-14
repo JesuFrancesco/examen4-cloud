@@ -11,7 +11,7 @@ def handler(ctx, data: io.BytesIO = None):
     with get_connection() as conn:
         cursor = conn.cursor()
         cursor.execute(
-            "SELECT comida_votada, COUNT(1) as votos FROM votacion GROUP BY comida_votada"
+            "SELECT comida_votada, COUNT(1) as votos FROM votacion GROUP BY comida_votada ORDER BY votos DESC"
         )
         result = cursor.fetchall()
         res = [{"tipo_comida": row[0], "votos": row[1]} for row in result]
